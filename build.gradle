@@ -24,10 +24,9 @@ tasks.withType(JavaCompile) {
 repositories {
     mavenCentral()
 }
-
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:5.9.0'
-    testImplementation 'mysql:mysql-connector-java:8.0.29'
+    testImplementation 'mysql:mysql-connector-java:8.0.22'
     testImplementation 'com.codeborne:selenide:6.19.1'
     testCompileOnly 'org.projectlombok:lombok:1.18.36'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.36'
