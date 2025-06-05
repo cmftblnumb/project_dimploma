@@ -21,6 +21,12 @@ public class DebitCardTest {
     String validOwnerName = DataHelper.getRandomName();
     String validCode = DataHelper.getNumberCVC(3);
 
+    @BeforeAll
+    static void setUpAllureListener() {
+        SelenideLogger.addListener("AllureSelenide",
+                new AllureSelenide().screenshots(true).savePageSource(true));
+    }
+
     @BeforeEach
     public void setUp() {
         open("http://localhost:8080");

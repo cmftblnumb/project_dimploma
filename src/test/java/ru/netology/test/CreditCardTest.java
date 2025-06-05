@@ -22,6 +22,12 @@ public class CreditCardTest {
     private String validCode;
 
     @BeforeAll
+    static void setUpAllureListener() {
+        SelenideLogger.addListener("AllureSelenide",
+                new AllureSelenide().screenshots(true).savePageSource(true));
+    }
+
+    @BeforeAll
     static void setUpAll() {
         SelenideLogger.addListener("allure", new AllureSelenide());
     }
