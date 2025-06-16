@@ -177,6 +177,7 @@ public class CreditCardTest {
         creditCardPage.fillCardPaymentForm(approvedCardNumber, validMonth, validYear, validOwnerName, emptyCVC);
         creditCardPage.errorFormat();
     }
+
     // Проверка ошибки при использовании спецсимволов в CVC
     @Test
     void shouldShowErrorForSpecialSymbolsInCVC() {

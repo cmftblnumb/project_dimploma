@@ -1,5 +1,6 @@
 package ru.netology.page;
 
+
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.Keys;
@@ -8,19 +9,19 @@ import ru.netology.data.DataHelper;
 import java.time.Duration;
 
 import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.*;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CreditPage {
-    private final SelenideElement errorFormat = $$(".input__inner").findBy(text("Неверный формат"));
-    private final SelenideElement emptyField = $$(".input__inner").findBy(text("Поле обязательно для заполнения"));
-    private final SelenideElement errorCardTermValidity = $$(".input__inner").findBy(text("Неверно указан срок действия карты"));
-    private final SelenideElement termValidityExpired = $$(".input__inner").findBy(text("Истёк срок действия карты"));
+    private final SelenideElement errorFormat = $$("[class=input__inner]").findBy(text("Номер карты"));
+    private final SelenideElement emptyField = $$("[class=input__inner]").findBy(text("Владелец")).$(byText("Поле обязательно для заполнения"));
+    private final SelenideElement errorCardTermValidity = $$("[class=input__inner]").findBy(text("Месяц"));
+    private final SelenideElement termValidityExpired = $$("[class=input__inner]").findBy(text("Год")).$(byText("Истёк срок действия карты"));
     private final SelenideElement bankDeclinedOperation = $$(".notification__content").findBy(text("Ошибка! Банк отказал в проведении операции."));
     private final SelenideElement bankApprovedOperation = $$(".notification__content").findBy(text("Операция одобрена Банком."));
     public SelenideElement ownerField = $$(".input__inner").findBy(text("Владелец")).$(".input__control");
-
 
     public SelenideElement codeField = $("[placeholder='999']");
     public SelenideElement contButton = $$(".button__content").find(Condition.exactText("Продолжить"));
@@ -67,6 +68,7 @@ public class CreditPage {
 
         termValidityExpired.shouldBe(visible);
     }
+
     public void cleanFields() {
         cardNumberField.doubleClick().sendKeys(Keys.BACK_SPACE);
         monthField.doubleClick().sendKeys(Keys.BACK_SPACE);
