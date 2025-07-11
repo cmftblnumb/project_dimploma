@@ -10,9 +10,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class SQLHelper {
-    private static final String url = System.getProperty("db.url");
-    private static final String user = System.getProperty("db.user");
-    private static final String pass  = System.getProperty("db.password");
+    private static final String url = System.getProperty("db.url", "jdbc:mysql://localhost:3306/app");
+    private static final String user = System.getProperty("db.user", "app");
+    private static final String pass = System.getProperty("db.password", "pass");
     private static final QueryRunner runner = new QueryRunner();
 
 
@@ -46,7 +46,6 @@ public class SQLHelper {
         var connection = getConnection();
         var codeSQL = "SELECT status FROM credit_request_entity ORDER BY created DESC LIMIT 1;";
         return runner.query(connection, codeSQL, new ScalarHandler<>());
-
 
     }
 
